@@ -10,11 +10,8 @@ const router = new netconf.Client({
     // ...
 });
 
-function convertNames(name) {
-    return name.replace(/-|:/g, '_');
-}
+router.parseOpts.valueProcessors = [ router._objectHelper ];
+router.parseOpts.attrValueProcessors = [ router._objectHelper ];
 
-router.parseOpts.tagNameProcessors = [ convertNames ];
-router.parseOpts.attrNameProcessors = [ convertNames ];
 ```
 
